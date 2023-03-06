@@ -1,17 +1,13 @@
-from django.conf.urls import url
-from .views import *
+from django.urls import path
 
-app_name = "post"
+from .views import post_index, post_create, post_detail, post_update, post_delete
+
+app_name = 'post'
 
 urlpatterns = [
-
-    url(r'^index/$', post_index, name="index"),
-
-    url(r'^create/$', post_create, name='create'),
-
-    url(r'^(?P<slug>[\w-]+)/$', post_detail, name='detail'),
-
-    url(r'^(?P<slug>[\w-]+)/update/$', post_update, name="update"),
-
-    url(r'^(?P<slug>[\w-]+)/delete/$', post_delete, name='delete'),
+    path('index/', post_index, name="index"),
+    path('create/', post_create, name='create'),
+    path('<slug:slug>/', post_detail, name='detail'),
+    path('<slug:slug>/update/', post_update, name="update"),
+    path('<slug:slug>/delete/', post_delete, name='delete'),
 ]

@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,13 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # Kendi Uygulamarım
     'post',
     # 3. Parti Uygulamalar
     'crispy_forms',
+
     'django_cleanup',
     'ckeditor',
-    'captcha'
+    'django.contrib.sites',
+    "crispy_bootstrap5",
+
+
 ]
 
 MIDDLEWARE = [
@@ -70,13 +74,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
 
 WSGI_APPLICATION = 'blog.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -107,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -121,7 +124,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
@@ -134,9 +136,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
-
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 CKEDITOR_JQUERY_URL = os.path.join(STATIC_URL, 'js/jquery.min.js')
 CKEDITOR_CONFIGS = {
@@ -145,8 +147,4 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-
-RECAPTCHA_PUBLIC_KEY = '6Lf5fxcUAAAAADwchIhprA8UnkgXOTBKv8HWArzP'
-RECAPTCHA_PRIVATE_KEY = '6Lf5fxcUAAAAAODE1PXCcat0n0zWuCv2fDAcLcTn'
-NOCAPTCHA = True
 

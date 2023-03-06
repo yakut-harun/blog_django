@@ -67,7 +67,7 @@ def post_create(request):
     #     # Formu kullanıcıya göster
     #     form = PostForm()
 
-    if not request.user.is_authenticated():
+    if not request.user.is_authenticated:
         # Eğer kullanıcı giriş yapmamış ise hata sayfası gönder
         return Http404()
 

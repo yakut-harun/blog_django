@@ -1,52 +1,32 @@
-<!-- Navbar Start -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="banner">
-    <div class="container">
-
-        <div class="navbar-header">
-
-            <!-- Telefon ekranları için menü butonu -->
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- İsim Soyisim veya Marka İsmi -->
-            <a href="{% url 'home' %}" class="navbar-brand">Django Dersleri</a>
-        </div>
-
-        <nav class="collapse navbar-collapse" role="navigation">
-
-            <!-- Arama Çubuğu -->
-            <form class="navbar-form navbar-left" role="search" method="GET" action="">
-                <div class="input-group">
-                    <input class="form-control" type="text" name="q" placeholder="Search on posts" value="{{ request.GET.q }}" >
-                    <span class="input-group-btn">
-                        <input class="btn btn-default" type="submit" value="Ara">
-                    </span>
-                </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Django Dersleri</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <form class="d-flex navbar-form mx-auto my-2 my-lg-0" method="GET" action="">
+                <input class="form-control me-2" type="search" name="q" placeholder="Search on posts" value="{{ request.GET.q }}" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-
-            <!-- Temel Sayfalar -->
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="navbar-nav ms-auto">
                 {% if request.user.is_authenticated %}
-                    <li><a href="{% url 'post:create' %}" >Yazı Ekle</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'post:create' %}">Yazı Ekle</a></li>
                 {% endif %}
-                <li><a href="{% url 'home' %}">Anasayfa</a></li>
-                <li><a href="{% url 'post:index' %}">Blog</a></li>
-                <li><a href="#">Hakkımda</a></li>
-                <li><a href="#">İletişim</a></li>
-
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Anasayfa</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'post:index' %}">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Hakkımda</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">İletişim</a></li>
                 {% if not request.user.is_authenticated %}
-                    <li><a href="{% url 'accounts:register' %}">Üye Ol</a></li>
-                    <li><a href="{% url 'accounts:login' %}">Giriş</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:register' %}">Üye Ol</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Giriş</a></li>
                 {% else %}
-                    <li><a href="{% url 'accounts:logout' %}">Çıkış</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">Çıkış</a></li>
                 {% endif %}
             </ul>
-
-        </nav>
-
+        </div>
     </div>
 </nav>
+
+
+
